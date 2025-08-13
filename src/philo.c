@@ -10,39 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_error(char *error)
-{
-	ft_printf("error: %s", error);
-	exit(1);
-}
+#include "../philo.h"
 
-int	ft_atoi(char *str)
+static int start_threads(t_data *d)
 {
-	unsigned long long	result;
-	int					sign;
-	int					i;
+	int i;
 
-	result = 0;
-	sign = 1;
+	d->start_time = now_ms();
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (i < d->n)
 	{
-		result = result * 10 + (str[i] - '0');
+		if (pthread_create(&d->philos[i].thread, NULL, &philo_start, &d->philos[i]) != 0)
+			return (1);
 		i++;
 	}
-	return (sign * result);
+	if (pthread_create(&d->monitor, NULL, &monitor_start, d) != 0)
+		return (1);
+	i = 0;
+	while (i < d->n)
+	{
+		pthread_join(d->philos[i].thread, NULL);
+		i++;
+	}
+	pthread_join(d->monitor, NULL);
+	return (0);
 }
 
-int	main(int ac, char *av)
+int main(int ac, char **av)
 {
-	if(ac != 5 && ac != 6)
-		return(write(2, "argument count is wrong\n", 25));	
-	pthread_create()
+	t_data d;
+
+	memset(&d, 0, sizeof(d));
+	if (parse_args(ac, av, &d))
+		return (1);
+	if (setup(&d))
+		return (cleanup(&d), 1);
+	if (start_threads(&d))
+		return (cleanup(&d), 1);
+	cleanup(&d);
+	return (0);
 }
+

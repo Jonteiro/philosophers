@@ -11,13 +11,15 @@
 # **************************************************************************** #
 
 NAME=philo
-CC=cc
-CFLAGS= -Wall -Wextra -Werror -g -Imlx -I/usr/include/X11
+CC=gcc
+CFLAGS= -Wall -Wextra -Werror 
 OBJ_DIR= obj
 SRC_DIR= src
-LIBFT= libft/libft.a
 
-SRC_FILES= 
+SRC_FILES= utils.c time.c routine.c main.c parse.c \
+			philo.c philo_utils.c philo_routine.c \
+			philo_init.c philo_destroy.c philo_monitor.c \
+			philo_print.c
 
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -27,17 +29,11 @@ all: $(NAME)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	
-$(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -I/usr/include -Imlx -c $< -o $@
-
-$(LIBFT):
-	@make -C ./libft -s
-	
-$(MLX):
-	@make -C ./mlx -s
 
 clean:
 	@rm -rf $(OBJ_DIR)
