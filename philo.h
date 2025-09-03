@@ -31,30 +31,30 @@ typedef struct s_data t_data;
 
 typedef struct s_philo
 {
-	int			id;            /* 1..n */
-	int			left;          /* index of left fork */
-	int			right;         /* index of right fork */
-	long		last_meal;     /* ms since epoch of last meal */
-	int			meals_eaten;   /* counter */
-	pthread_t	thread;        /* worker thread */
-	t_data		*data;          /* backref */
+	int			id;      
+	int			left;
+	int			right;
+	long		last_meal;    
+	int			meals_eaten;
+	pthread_t	thread;
+	t_data		*data;
 }   t_philo;
 
 struct s_data
 {
-	int			n;              /* number of philosophers */
-	long		t_die;          /* ms */
-	long		t_eat;          /* ms */
-	long		t_sleep;        /* ms */
-	int			must_eat;       /* -1 if not set */
-	long		start_time;     /* ms */
-	int			stop;           /* 0/1 guarded by stop_mutex */
+	int			n;    
+	long		t_die;     
+	long		t_eat;     
+	long		t_sleep;   
+	int			must_eat;    
+	long		start_time;
+	int			stop;         
 	pthread_mutex_t stop_mutex;
 	pthread_mutex_t print_mutex;
-	pthread_mutex_t meal_mutex; /* protects last_meal & meals_eaten */
-	pthread_mutex_t *forks;     /* array of n mutexes */
-	t_philo		*philos;        /* array of n philosophers */
-	pthread_t	monitor;       /* monitor thread */
+	pthread_mutex_t meal_mutex; 
+	pthread_mutex_t *forks;   
+	t_philo		*philos; 
+	pthread_t	monitor;
 } t_data;
 
 /* parse.c */
