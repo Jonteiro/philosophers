@@ -19,7 +19,7 @@
 # include <string.h>
 # include <time.h>
 # include <sys/time.h>
-// # include <pthread.h>
+# include <pthread.h>
 
 # define MSG_FORK      "has taken a fork"
 # define MSG_EAT       "is eating"

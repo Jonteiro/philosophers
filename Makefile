@@ -37,12 +37,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@make clean -C ./libft -s
-	@make clean -C ./mlx -s
 	
 fclean: clean
 	@rm -rf $(NAME)
-	@rm -rf $(LIBFT)
 	
 re: fclean all
 
