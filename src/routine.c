@@ -6,16 +6,16 @@
 /*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 12:41:58 by jsilveir          #+#    #+#             */
-/*   Updated: 2025/08/14 12:41:59 by jsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 15:05:37 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-static void take_forks(t_philo *p)
+static void	take_forks(t_philo *p)
 {
-	int a;
-	int b;
+	int	a;
+	int	b;
 
 	a = p->left;
 	b = p->right;
@@ -32,14 +32,14 @@ static void take_forks(t_philo *p)
 	log_state(p->data, p->id, MSG_FORK);
 }
 
-static void drop_forks(t_philo *p)
+static void	drop_forks(t_philo *p)
 {
 	pthread_mutex_unlock(&p->data->forks[p->left]);
 	if (p->data->n > 1)
 		pthread_mutex_unlock(&p->data->forks[p->right]);
 }
 
-static void eat(t_philo *p)
+static void	eat(t_philo *p)
 {
 	pthread_mutex_lock(&p->data->meal_mutex);
 	p->last_meal = now_ms();
@@ -51,7 +51,7 @@ static void eat(t_philo *p)
 	pthread_mutex_unlock(&p->data->meal_mutex);
 }
 
-static void *solo_case(t_philo *p)
+static void	*solo_case(t_philo *p)
 {
 	log_state(p->data, p->id, MSG_FORK);
 	sleep_ms_precise(p->data->t_die, p->data);
@@ -59,9 +59,9 @@ static void *solo_case(t_philo *p)
 	return (NULL);
 }
 
-void *philo_start(void *arg)
+void	*philo_start(void *arg)
 {
-	t_philo *p;
+	t_philo	*p;
 
 	p = (t_philo *)arg;
 	pthread_mutex_lock(&p->data->meal_mutex);

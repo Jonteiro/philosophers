@@ -6,13 +6,13 @@
 /*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 12:41:30 by jsilveir          #+#    #+#             */
-/*   Updated: 2025/08/21 12:09:21 by jsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 15:03:40 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-static int set_arg_int(const char *s, int *dst)
+static int	set_arg_int(const char *s, int *dst)
 {
 	if (ft_atoi_pos(s, dst))
 		return (1);
@@ -21,7 +21,7 @@ static int set_arg_int(const char *s, int *dst)
 	return (0);
 }
 
-int parse_args(int ac, char **av, t_data *d)
+int	parse_args(int ac, char **av, t_data *d)
 {
 	if (ac != 5 && ac != 6)
 	{

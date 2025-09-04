@@ -6,15 +6,15 @@
 /*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 12:41:37 by jsilveir          #+#    #+#             */
-/*   Updated: 2025/08/14 12:41:40 by jsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:37:52 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-static void init_philos(t_data *d)
+static void	init_philos(t_data *d)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < d->n)
@@ -22,16 +22,16 @@ static void init_philos(t_data *d)
 		d->philos[i].id = i + 1;
 		d->philos[i].left = i;
 		d->philos[i].right = (i + 1) % d->n;
-		d->philos[i].last_meal = 0;
 		d->philos[i].meals_eaten = 0;
 		d->philos[i].data = d;
 		i++;
 	}
 }
+// d->philos[i].last_meal = d->start_time;
 
-int setup(t_data *d)
+int	setup(t_data *d)
 {
-	int i;
+	int	i;
 
 	if (pthread_mutex_init(&d->print_mutex, NULL) != 0)
 		return (1);
@@ -56,9 +56,9 @@ int setup(t_data *d)
 	return (0);
 }
 
-void cleanup(t_data *d)
+void	cleanup(t_data *d)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (d->forks)

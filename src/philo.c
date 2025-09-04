@@ -6,21 +6,22 @@
 /*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:32:44 by jsilveir          #+#    #+#             */
-/*   Updated: 2025/08/11 15:39:21 by jsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 15:04:25 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-static int start_threads(t_data *d)
+static int	start_threads(t_data *d)
 {
-	int i;
+	int	i;
 
 	d->start_time = now_ms();
 	i = 0;
 	while (i < d->n)
 	{
-		if (pthread_create(&d->philos[i].thread, NULL, &philo_start, &d->philos[i]) != 0)
+		if (pthread_create(&d->philos[i].thread, NULL,
+				&philo_start, &d->philos[i]) != 0)
 			return (1);
 		i++;
 	}
@@ -36,9 +37,9 @@ static int start_threads(t_data *d)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_data d;
+	t_data	d;
 
 	memset(&d, 0, sizeof(d));
 	if (parse_args(ac, av, &d))
@@ -50,4 +51,3 @@ int main(int ac, char **av)
 	cleanup(&d);
 	return (0);
 }
-

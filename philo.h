@@ -6,7 +6,7 @@
 /*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:47:58 by jsilveir          #+#    #+#             */
-/*   Updated: 2025/08/21 12:02:49 by jsilveir         ###   ########.fr       */
+/*   Updated: 2025/09/04 12:31:15 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-# define MSG_FORK      "has taken a fork"
-# define MSG_EAT       "is eating"
-# define MSG_SLEEP     "is sleeping"
-# define MSG_THINK     "is thinking"
-# define MSG_DIED      "died"
+# define MSG_FORK	"has taken a fork"
+# define MSG_EAT	"is eating"
+# define MSG_SLEEP	"is sleeping"
+# define MSG_THINK	"is thinking"
+# define MSG_DIED 	"died"
 
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct s_philo
 {
@@ -38,26 +38,24 @@ typedef struct s_philo
 	int			meals_eaten;
 	pthread_t	thread;
 	t_data		*data;
-}   t_philo;
+}	t_philo;
 
 typedef struct s_data
 {
-	int			n;
-	long		t_die;
-	long		t_eat;
-	long		t_sleep;
-	int			must_eat;
-	long		start_time;
-	int			stop;
-	pthread_mutex_t stop_mutex;
-	pthread_mutex_t print_mutex;
-	pthread_mutex_t meal_mutex;
-	pthread_mutex_t *forks;
-	t_philo		*philos;
-	pthread_t	monitor;       
-} t_data;
-
-
+	int				n;
+	long			t_die;
+	long			t_eat;
+	long			t_sleep;
+	int				must_eat;
+	long			start_time;
+	int				stop;
+	pthread_mutex_t	stop_mutex;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	meal_mutex;
+	pthread_mutex_t	*forks;
+	t_philo			*philos;
+	pthread_t		monitor;
+}	t_data;
 
 int			parse_args(int ac, char **av, t_data *d);
 
