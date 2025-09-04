@@ -6,20 +6,19 @@
 #    By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 12:33:45 by jsilveir          #+#    #+#              #
-#    Updated: 2025/07/22 13:47:50 by jsilveir         ###   ########.fr        #
+#    Updated: 2025/08/21 12:28:19 by jsilveir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=philo
-CC=gcc
+CC=cc
 CFLAGS= -Wall -Wextra -Werror 
 OBJ_DIR= obj
 SRC_DIR= src
 
-SRC_FILES= utils.c time.c routine.c main.c parse.c \
-			philo.c philo_utils.c philo_routine.c \
-			philo_init.c philo_destroy.c philo_monitor.c \
-			philo_print.c
+SRC_FILES= utils.c time.c routine.c print.c \
+			philo.c parse.c monitor.c init.c
+			
 
 OBJ= $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 SRC= $(addprefix $(SRC_DIR)/, $(SRC_FILES))

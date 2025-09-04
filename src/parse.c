@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 12:31:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/03 12:31:49 by marvin           ###   ########.fr       */
+/*   Created: 2025/08/14 12:41:30 by jsilveir          #+#    #+#             */
+/*   Updated: 2025/08/21 12:09:21 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int parse_args(int ac, char **av, t_data *d)
 {
 	if (ac != 5 && ac != 6)
 	{
-		write(2, "Usage: ./philo n t_die t_eat t_sleep [must_eat]\n", 52);
+		write(2, "Usage: ./philo n_philo t_die t_eat t_sleep [n_eat]\n", 52);
 		return (1);
 	}
 	if (set_arg_int(av[1], &d->n) || d->n > 1000)
-		return (write(2, "Error: invalid n\n", 19), 1);
+		return (write(2, "Error: invalid n_philo\n", 24), 1);
 	if (set_arg_int(av[2], (int *)&d->t_die))
 		return (write(2, "Error: invalid t_die\n", 23), 1);
 	if (set_arg_int(av[3], (int *)&d->t_eat))
@@ -40,7 +40,7 @@ int parse_args(int ac, char **av, t_data *d)
 	if (ac == 6)
 	{
 		if (set_arg_int(av[5], &d->must_eat))
-			return (write(2, "Error: invalid must_eat\n", 25), 1);
+			return (write(2, "Error: invalid n_eat\n", 25), 1);
 	}
 	return (0);
 }

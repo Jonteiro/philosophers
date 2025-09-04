@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 12:31:58 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/03 12:31:58 by marvin           ###   ########.fr       */
+/*   Created: 2025/08/14 12:42:02 by jsilveir          #+#    #+#             */
+/*   Updated: 2025/09/01 12:18:55 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void sleep_ms_precise(long ms, t_data *d)
 	{
 		if (get_stop(d))
 			break ;
-		usleep(500);
+		usleep(200);
 	}
 }

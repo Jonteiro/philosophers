@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jsilveir <jsilveir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 12:32:10 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/03 12:32:10 by marvin           ###   ########.fr       */
+/*   Created: 2025/08/14 12:41:46 by jsilveir          #+#    #+#             */
+/*   Updated: 2025/09/01 12:16:40 by jsilveir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void *monitor_start(void *arg)
 			set_stop(d, 1);
 			break ;
 		}
-		usleep(500);
+		usleep(200);
 	}
 	return (NULL);
 }
